@@ -85,14 +85,11 @@ var fight = function(enemy) {
 
 // function to start a new game
 var startGame = function() {
-    // reset player stats
     playerInfo.reset();
 
     for(var i = 0; i < enemyInfo.length; i++) {
         if(playerInfo.health > 0) {
             window.alert("Welcome to Robot Gladiators! Round " + (i + 1));
-            // use debugger to pause script from running and check what's going on at that moment in the code
-            // debugger;
             // pick new enemy to fight based on the index of enemy.names array
             var pickedEnemyObj = enemyInfo[i];
             // reset enemy.health before starting new fight
@@ -141,21 +138,20 @@ var endGame = function() {
 // shop function
 var shop = function() {
     // ask player what they'd like to do
-    var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice.");
-    // use switch to carry out action
+    var shopOptionPrompt = window.prompt("Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE.");
+
+    shopOptionPrompt = parseInt(shopOptionPrompt);
+
     switch (shopOptionPrompt) {
-        case "refill":
-        case "REFILL":
+        case 1:
             playerInfo.refillHealth();
             break;
 
-        case "upgrade":
-        case "UPGRADE":
+        case 2:
             playerInfo.upgradeAttack();
             break;
 
-        case "leave":
-        case "LEAVE":
+        case 3:
             window.alert("Leaving the store.");
             // do nothing, so function will end
             break;
